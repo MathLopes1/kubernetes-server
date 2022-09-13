@@ -19,6 +19,13 @@ spec:
           image: "mathlopes/hello-go:v3"
           env:
             - name: NAME
-              value: "Matheus"
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env 
+                  key: NAME
+                  
             - name: AGE
-              value: "22"
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env 
+                  key: AGE
