@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver 
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "mathlopes/hello-go:v5.5"
+          image: "mathlopes/hello-go:v5.6"
 
           resources:
             requests: #Reservando o minimo de recursos do Cluster/Node para o Pod.
