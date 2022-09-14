@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver 
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -16,8 +16,16 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "mathlopes/hello-go:v5.5"
+          image: "mathlopes/hello-go:v5.6"
 
+          resources:
+            requests: #Reservando o minimo de recursos do Cluster/Node para o Pod.
+              cpu: 100m #vCPU -> 1000m (milicores)
+              memory: 20Mi
+            limits:
+              cpu: 500m #Limite que o pod deve ter de recursos.
+              memory: 25Mi
+              
           startupProbe:
             httpGet:
               path: /healthz
